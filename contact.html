@@ -117,7 +117,7 @@
     function handleContactSubmit(event) {
       event.preventDefault();
       // Initialize EmailJS (public key placeholder)
-      emailjs.init('YOUR_PUBLIC_KEY');
+      emailjs.init('yVD4Ke3Z_AnVw-F83');
 
       // Gather form values
       const name = document.getElementById('contactName').value.trim();
@@ -136,7 +136,7 @@
         to_email: 'vaishnavvenu2007@gmail.com'
       };
 
-      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+      emailjs.send('service_3ba6puj', 'yVD4Ke3Z_AnVw-F83', templateParams)
         .then(() => {
           alert('Message Sent Successfully!');
           document.getElementById('contactForm').reset();
