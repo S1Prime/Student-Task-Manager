@@ -5,11 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notifications — Student Task Manager</title>
     
+    <script>
+      // Authentication gate check
+      if (localStorage.getItem("isLoggedIn") !== "true") {
+        window.location.href = "login.html";
+      }
+    </script>
+    
     <!-- Premium Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="codestyle.css">
 </head>
 
@@ -19,6 +27,36 @@
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-orb bg-orb-3"></div>
 
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top glass-navbar py-3">
+      <div class="container-xl">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+          <span class="fs-4">📚</span>
+          <span class="fw-bold tracking-wider fs-6 text-white">STUDENT<span class="text-primary"> TASK </span>MANAGER</span>
+        </a>
+        
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav mx-auto mb-2 mb-md-0 gap-2">
+            <li class="nav-item"><a class="nav-link text-secondary" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-secondary" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link text-secondary" href="dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link text-secondary" href="task.html">Tasks</a></li>
+            <li class="nav-item"><a class="nav-link text-secondary" href="schedule.html">Schedule</a></li>
+            <li class="nav-item"><a class="nav-link text-secondary" href="progress.html">Progress</a></li>
+            <li class="nav-item"><a class="nav-link text-primary active" href="reminder.html">Notifications</a></li>
+          </ul>
+          <div class="d-flex gap-2">
+            <a href="profile.html" class="btn btn-custom-outline py-2 px-3 fs-7">👤 Profile</a>
+            <a href="#" onclick="logout(event)" class="btn btn-custom-primary py-2 px-3 fs-7 d-none d-sm-block">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <div class="container">
 
 <h1>🔔 Notifications</h1>
@@ -27,108 +65,120 @@
 Upcoming task reminders and deadlines
 </p>
 
-<div class="notification-list">
-
-<div class="notification high">
-
-<div class="left">
-
-<div class="icon">
-⚠️
-</div>
-
-<div class="message">
-
-<h3>Java Assignment Due Soon</h3>
-
-<p>
-Complete your Java OOP assignment before tomorrow.
-</p>
-
-</div>
-
-</div>
-
-<div class="time">
-1 hour ago
-</div>
-
-</div>
-
-
-<div class="notification medium">
-
-<div class="left">
-
-<div class="icon">
-📚
-</div>
-
-<div class="message">
-
-<h3>Database Quiz Reminder</h3>
-
-<p>
-Database quiz scheduled in 2 days.
-</p>
-
-</div>
-
-</div>
-
-<div class="time">
-Today
-</div>
-
-</div>
-
-
-<div class="notification low">
-
-<div class="left">
-
-<div class="icon">
-📝
-</div>
-
-<div class="message">
-
-<h3>Mini Project Review</h3>
-
-<p>
-Prepare documents for project review.
-</p>
-
-</div>
-
-</div>
-
-<div class="time">
-Tomorrow
-</div>
-
-</div>
-
+<div class="notification-list" id="notificationList">
+  <!-- Dynamic notifications will be injected here -->
 </div>
 
 <div class="exit">
-
-<button onclick="goBack()">
-← Exit to Dashboard
-</button>
-
+  <button onclick="goBack()">
+    ← Exit to Dashboard
+  </button>
 </div>
 
 </div>
 
 <script>
+  function logout(event) {
+    if (event) event.preventDefault();
+    localStorage.removeItem("isLoggedIn");
+    window.location.href = "login.html";
+  }
 
-function goBack(){
+  function goBack() {
+    window.location.href = "dashboard.html";
+  }
 
-window.location="Dashboard.html";
+  function loadNotifications() {
+    let storedTasks = localStorage.getItem("studentTasks");
+    let tasks = storedTasks ? JSON.parse(storedTasks) : [
+      { title: "UID Project Implementation Plan", priority: "High", date: "2026-06-03", completed: false },
+      { title: "Database Assignment 3", priority: "Medium", date: "2026-06-05", completed: false },
+      { title: "Java Coding Exercises", priority: "Low", date: "2026-06-10", completed: true }
+    ];
 
-}
+    let pendingTasks = tasks.filter(t => !t.completed);
+    let listDiv = document.getElementById("notificationList");
+    listDiv.innerHTML = "";
 
+    if (pendingTasks.length === 0) {
+      listDiv.innerHTML = `
+        <div class="notification low" style="border-left: 4px solid var(--primary); background: linear-gradient(135deg, rgba(16, 185, 129, 0.04) 0%, rgba(3, 8, 12, 0.5) 100%);">
+          <div class="left">
+            <div class="icon">✨</div>
+            <div class="message">
+              <h3>All Caught Up!</h3>
+              <p>You have no pending tasks or upcoming deadlines. Great job!</p>
+            </div>
+          </div>
+          <div class="time">Now</div>
+        </div>`;
+      return;
+    }
+
+    // Get today's date in local system YYYY-MM-DD
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let todayTime = today.getTime();
+
+    pendingTasks.forEach(task => {
+      let classType = "low";
+      let icon = "📝";
+      let timeStr = "Upcoming";
+      let messageDesc = "";
+
+      if (task.date) {
+        let taskDate = new Date(task.date);
+        taskDate.setHours(0, 0, 0, 0);
+        let taskTime = taskDate.getTime();
+
+        if (taskTime < todayTime) {
+          classType = "high";
+          icon = "⚠️";
+          timeStr = "Overdue";
+          messageDesc = `This task is overdue (was due on ${task.date}). Please complete it immediately!`;
+        } else if (taskTime === todayTime) {
+          classType = "high";
+          icon = "🔔";
+          timeStr = "Today";
+          messageDesc = `This task is due today! Priority level is ${task.priority}.`;
+        } else {
+          // Future task
+          if (task.priority === "High") {
+            classType = "medium";
+            icon = "📚";
+          } else {
+            classType = "low";
+            icon = "📝";
+          }
+          timeStr = task.date;
+          messageDesc = `Upcoming task due on ${task.date}. Priority: ${task.priority}.`;
+        }
+      } else {
+        timeStr = "No Date";
+        messageDesc = `Task has no due date. Priority: ${task.priority}.`;
+        if (task.priority === "High") {
+          classType = "medium";
+          icon = "📚";
+        }
+      }
+
+      let div = document.createElement("div");
+      div.className = `notification ${classType}`;
+      div.innerHTML = `
+        <div class="left">
+          <div class="icon">${icon}</div>
+          <div class="message">
+            <h3>${task.title}</h3>
+            <p>${messageDesc}</p>
+          </div>
+        </div>
+        <div class="time">${timeStr}</div>
+      `;
+      listDiv.appendChild(div);
+    });
+  }
+
+  loadNotifications();
 </script>
 
 </body>

@@ -3,80 +3,117 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meet the Team — Student Task Manager</title>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="codestyle.css"/>
-
-
+</head>
 <body class="page-about">
-    <!-- Animated Ambient Glass Orbs (Emerald & Gold Aurora) -->
-    <div class="bg-orb bg-orb-1"></div>
-    <div class="bg-orb bg-orb-2"></div>
-    <div class="bg-orb bg-orb-3"></div>
-    <div class="about-card" style="margin-top: 32px;">
 
-        <h2>Meet the Team</h2>
-        <p>
-            This project was built by four B.Tech Computer Science Engineering students at <strong>Amrita Vishwa Vidyapeetham</strong> as part of their User Interface Design course.
-        </p>
-        <div class="team-grid">
-            <a href="https://s1prime.github.io/Portfolio/" target="_blank" class="avatar-link">
-            <div class="team-card">
-            <div class="team-card">
-                <div class="team-avatar">V</div>
-                <div class="team-name">Vaishnav Venu</div>
-                <div class="team-role">B.Tech CSE · Amrita Vishwa Vidyapeetham</div>
-            </div>
-            </div>
-            </a>
-            <a href="https://eak-47.github.io/Portfolio/" target="_blank" class="avatar-link">
-            <div class="team-card">
-            <div class="team-card">
-                <div class="team-avatar">A</div>
-                <div class="team-name">Akash S Kishor</div>
-                <div class="team-role">B.Tech CSE · Amrita Vishwa Vidyapeetham</div>
-            </div>
-            </div>
+  <!-- Animated Ambient Glass Orbs -->
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
 
-            </a>
-            <a href="https://www.rajbarnawal.com.np/" target="_blank" class="avatar-link">
-            <div class="team-card">
-            <div class="team-card">
-                <div class="team-avatar">R</div>
-                <div class="team-name">Raj Barnawal</div>
-                <div class="team-role">B.Tech CSE · Amrita Vishwa Vidyapeetham</div>
-            </div>
-            </div>
-            </a>
-            <a href="https://www.prafulsingh.com.np/" target="_blank" class="avatar-link">
-            <div class="team-card">
-            <div class="team-card">
-                <div class="team-avatar">P</div>
-                <div class="team-name">Praful Singh</div>
-                <div class="team-role">B.Tech CSE · Amrita Vishwa Vidyapeetham</div>
-            </div>
-            </div>
-            </a>
-         </div>
-     </div>
-</div>
-
- <div class="team-card">
-        <button class="back-button" onclick="window.location.href='index.html'" style="background: rgba(255, 255, 255, 0.03); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 24px; font-size: 0.9rem; font-weight: 600; border-radius: 8px; cursor: pointer; transition: all 0.25s ease-in-out; font-family: 'Plus Jakarta Sans', sans-serif;">← Back to Home</button>
-
-        <script>
-        const backBtn = document.querySelector('.back-button');
-        backBtn.addEventListener('mouseenter', () => {
-            backBtn.style.background = '#10b981';
-            backBtn.style.borderColor = '#10b981';
-            backBtn.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.4)';
-            backBtn.style.transform = 'translateY(-2px)';
-        });
-        backBtn.addEventListener('mouseleave', () => {
-            backBtn.style.background = 'rgba(255, 255, 255, 0.03)';
-            backBtn.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-            backBtn.style.boxShadow = 'none';
-            backBtn.style.transform = 'translateY(0)';
-        });
-        </script>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top glass-navbar py-3">
+    <div class="container-xl">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+        <span class="fs-4">📚</span>
+        <span class="fw-bold tracking-wider fs-6 text-white">STUDENT<span class="text-primary"> TASK </span>MANAGER</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav mx-auto mb-2 mb-md-0 gap-2">
+          <li class="nav-item"><a class="nav-link text-secondary" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary" href="login.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary" href="faq.html">FAQs</a></li>
+          <li class="nav-item"><a class="nav-link text-secondary" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+          <a href="login.html" id="authNavbarBtn" class="btn btn-custom-outline py-2 px-3 fs-7">Login</a>
+        </div>
+      </div>
     </div>
+  </nav>
+
+  <div class="container d-flex flex-column align-items-center justify-content-center" style="margin-top: 8rem; margin-bottom: 4rem; z-index: 1;">
+    <div class="about-card">
+      <h2>Meet the Team</h2>
+      <p>
+        This project was built by four B.Tech Computer Science Engineering students at <strong>Amrita Vishwa Vidyapeetham</strong> as part of their User Interface Design course.
+      </p>
+      
+      <div class="team-grid">
+        <a href="https://s1prime.github.io/Portfolio/" target="_blank" class="avatar-link text-decoration-none">
+          <div class="team-card">
+            <div class="team-avatar">V</div>
+            <div class="team-name">Vaishnav Venu</div>
+            <div class="team-role">B.Tech CSE · Amrita</div>
+          </div>
+        </a>
+
+        <a href="https://eak-47.github.io/Portfolio/" target="_blank" class="avatar-link text-decoration-none">
+          <div class="team-card">
+            <div class="team-avatar">A</div>
+            <div class="team-name">Akash S Kishor</div>
+            <div class="team-role">B.Tech CSE · Amrita</div>
+          </div>
+        </a>
+
+        <a href="https://www.rajbarnawal.com.np/" target="_blank" class="avatar-link text-decoration-none">
+          <div class="team-card">
+            <div class="team-avatar">R</div>
+            <div class="team-name">Raj Barnawal</div>
+            <div class="team-role">B.Tech CSE · Amrita</div>
+          </div>
+        </a>
+
+        <a href="https://www.prafulsingh.com.np/" target="_blank" class="avatar-link text-decoration-none">
+          <div class="team-card">
+            <div class="team-avatar">P</div>
+            <div class="team-name">Praful Singh</div>
+            <div class="team-role">B.Tech CSE · Amrita</div>
+          </div>
+        </a>
+      </div>
+      
+      <div class="text-center mt-5 pt-3 border-top border-secondary border-opacity-10">
+        <button class="back-button" onclick="window.location.href='index.html'">← Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function checkNavbarAuth() {
+      const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+      const authBtn = document.getElementById("authNavbarBtn");
+      if (authBtn) {
+        if (isLoggedIn) {
+          authBtn.textContent = "Logout";
+          authBtn.href = "#";
+          authBtn.onclick = function(e) {
+            e.preventDefault();
+            localStorage.removeItem("isLoggedIn");
+            window.location.href = "login.html";
+          };
+        } else {
+          authBtn.textContent = "Login";
+          authBtn.href = "login.html";
+          authBtn.onclick = null;
+        }
+      }
+    }
+    checkNavbarAuth();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

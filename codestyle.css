@@ -79,7 +79,16 @@
    PAGES: Home & Profile (index.html, profile.html)
    ========================================== */
 body.page-home,
-body.page-profile {
+body.page-profile,
+body.page-about,
+body.page-contact,
+body.page-faq,
+body.page-login,
+body.page-dashboard,
+body.page-progress,
+body.page-reminder,
+body.page-schedule,
+body.page-task {
   background-color: var(--bg-dark);
   color: var(--text-white);
   font-family: 'Plus Jakarta Sans', sans-serif;
@@ -91,33 +100,37 @@ body.page-profile {
 }
 
 body.page-home .text-primary,
-body.page-profile .text-primary {
+body.page-profile .text-primary,
+body.page-about .text-primary,
+body.page-contact .text-primary,
+body.page-faq .text-primary,
+body.page-login .text-primary,
+body.page-dashboard .text-primary,
+body.page-progress .text-primary,
+body.page-reminder .text-primary,
+body.page-schedule .text-primary,
+body.page-task .text-primary {
   color: var(--primary) !important;
 }
 
 /* Premium Scrollbar */
-body.page-home::-webkit-scrollbar,
-body.page-profile::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-body.page-home::-webkit-scrollbar-track,
-body.page-profile::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background: var(--bg-dark);
 }
-body.page-home::-webkit-scrollbar-thumb,
-body.page-profile::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 4px;
 }
-body.page-home::-webkit-scrollbar-thumb:hover,
-body.page-profile::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover {
   background: rgba(var(--primary-rgb), 0.4);
 }
 
 /* Background Orbs with Fluid Floating Animations */
-.page-home .bg-orb,
-.page-profile .bg-orb {
+.bg-orb {
   position: absolute;
   width: 450px;
   height: 450px;
@@ -128,22 +141,19 @@ body.page-profile::-webkit-scrollbar-thumb:hover {
   pointer-events: none;
   transition: all 1s ease;
 }
-.page-home .bg-orb-1,
-.page-profile .bg-orb-1 { 
+.bg-orb-1 { 
   top: -10%; 
   left: -10%; 
   background: radial-gradient(circle, var(--primary) 0%, #047857 100%); 
   animation: float-orb-1 20s infinite alternate ease-in-out;
 }
-.page-home .bg-orb-2,
-.page-profile .bg-orb-2 { 
+.bg-orb-2 { 
   top: 35%; 
   right: -10%; 
   background: radial-gradient(circle, var(--accent-gold) 0%, #b45309 100%); 
   animation: float-orb-2 25s infinite alternate ease-in-out;
 }
-.page-home .bg-orb-3,
-.page-profile .bg-orb-3 { 
+.bg-orb-3 { 
   bottom: -10%; 
   left: 15%; 
   width: 350px;
@@ -743,7 +753,7 @@ body.page-task {
   color: var(--text-white);
   font-family: 'Plus Jakarta Sans', sans-serif;
   min-height: 100vh;
-  padding: 60px 20px;
+  padding: 8rem 20px 4rem;
   position: relative;
   overflow-x: hidden;
 }
@@ -1262,5 +1272,102 @@ body.page-task {
   font-size: 0.8rem;
   color: var(--text-gray);
   line-height: 1.45;
+}
+
+/* ==========================================
+   SUPPORT & CONTACT PAGES STYLING
+   ========================================== */
+.support-card {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.support-grid-item {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* ==========================================
+   FAQ & ACCORDION OVERRIDES
+   ========================================== */
+.faq-accordion-item {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+.faq-accordion-item:hover {
+  border-color: rgba(16, 185, 129, 0.25) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+.faq-accordion-button {
+  background: transparent !important;
+  color: var(--text-white) !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  padding: 1.25rem 1.5rem !important;
+  border: none !important;
+}
+.faq-accordion-body {
+  border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-gray) !important;
+  font-size: 0.9rem !important;
+  padding: 1.25rem 1.5rem !important;
+  background: transparent !important;
+}
+
+/* ==========================================
+   PAGE: Login (login.html)
+   ========================================== */
+body.page-login {
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.login-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-light);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  width: 450px;
+  max-width: 100%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 1.5rem;
+  padding: 1.5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(16, 185, 129, 0.15) 40%, rgba(245, 158, 11, 0.3) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+.login-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================
+   LAYOUT CORRECTIONS
+   ========================================== */
+.page-schedule .schedule-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
