@@ -1,4 +1,4 @@
-  .homepage * {
+.homepage * {
       box-sizing: border-box;
     }
 
@@ -1370,4 +1370,3 @@ body.page-login {
   flex-wrap: wrap;
   gap: 12px;
 }
-
