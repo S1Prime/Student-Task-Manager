@@ -115,28 +115,35 @@
 
     function handleContactSubmit(event) {
       event.preventDefault();
-      
-      const name = document.getElementById("contactName").value.trim();
-      const email = document.getElementById("contactEmail").value.trim();
-      const query = document.getElementById("contactQuery").value.trim();
-      
-      if (name === "" || email === "" || query === "") {
-        alert("Please fill in all fields.");
+      // Initialize EmailJS (public key placeholder)
+      emailjs.init('YOUR_PUBLIC_KEY');
+
+      // Gather form values
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const query = document.getElementById('contactQuery').value.trim();
+
+      if (!name || !email || !query) {
+        alert('Please fill in all fields.');
         return;
       }
-      
-      const recipient = "vaishnavvenu2007@gmail.com";
-      const subject = "Student Task Manager Query from " + name;
-      const body = "Name: " + name + "\nAcademic Email: " + email + "\n\nQuery Details:\n" + query;
-      
-      const mailtoUrl = "mailto:" + recipient + 
-                        "?subject=" + encodeURIComponent(subject) + 
-                        "&body=" + encodeURIComponent(body);
-      
-      window.location.href = mailtoUrl;
-      
-      alert("✓ Redirecting to your mail client to send your query to " + recipient + ".");
-      document.getElementById("contactForm").reset();
+
+      const templateParams = {
+        from_name: name,
+        reply_to: email,
+        message: query,
+        to_email: 'vaishnavvenu2007@gmail.com'
+      };
+
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+        .then(() => {
+          alert('Message Sent Successfully!');
+          document.getElementById('contactForm').reset();
+        })
+        .catch((error) => {
+          alert('Failed to send message');
+          console.log(error);
+        });
     }
 
     checkNavbarAuth();
