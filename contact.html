@@ -51,15 +51,15 @@
           <form id="contactForm" onsubmit="handleContactSubmit(event)">
             <div class="mb-3">
               <label class="form-label text-secondary small mb-1 fw-medium">Full Name</label>
-              <input type="text" class="glass-input text-white" required>
+              <input type="text" id="contactName" class="glass-input text-white" required>
             </div>
             <div class="mb-3">
               <label class="form-label text-secondary small mb-1 fw-medium">Academic Email</label>
-              <input type="email" class="glass-input text-white" required>
+              <input type="email" id="contactEmail" class="glass-input text-white" required>
             </div>
             <div class="mb-3">
               <label class="form-label text-secondary small mb-1 fw-medium">Message Query</label>
-              <textarea class="glass-textarea text-white" rows="4" required></textarea>
+              <textarea id="contactQuery" class="glass-textarea text-white" rows="4" required></textarea>
             </div>
             <button type="submit" class="btn-custom-primary w-100 fs-7 mt-2 text-white fw-semibold">
               🚀 Dispatch Message
@@ -115,7 +115,27 @@
 
     function handleContactSubmit(event) {
       event.preventDefault();
-      alert("✓ Message Dispatched Successfully! Our UID group layout architects will address your query soon.");
+      
+      const name = document.getElementById("contactName").value.trim();
+      const email = document.getElementById("contactEmail").value.trim();
+      const query = document.getElementById("contactQuery").value.trim();
+      
+      if (name === "" || email === "" || query === "") {
+        alert("Please fill in all fields.");
+        return;
+      }
+      
+      const recipient = "vaishnavvenu2007@gmail.com";
+      const subject = "Student Task Manager Query from " + name;
+      const body = "Name: " + name + "\nAcademic Email: " + email + "\n\nQuery Details:\n" + query;
+      
+      const mailtoUrl = "mailto:" + recipient + 
+                        "?subject=" + encodeURIComponent(subject) + 
+                        "&body=" + encodeURIComponent(body);
+      
+      window.location.href = mailtoUrl;
+      
+      alert("✓ Redirecting to your mail client to send your query to " + recipient + ".");
       document.getElementById("contactForm").reset();
     }
 
