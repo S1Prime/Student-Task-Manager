@@ -16,7 +16,24 @@
       --success: #34d399;
       --danger: #f87171;
       --border-light: rgba(16, 185, 129, 0.08);
+      --font-body: 'Inter', sans-serif;
+      --font-heading: 'Space Grotesk', sans-serif;
     }
+
+/* ==========================================
+   GLOBAL FONT RULES
+   ========================================== */
+*, ::before, ::after {
+  font-family: var(--font-body) !important;
+}
+
+h1, h2, h3, h4, h5, h6, 
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6, 
+.navbar-brand, 
+h1 *, h2 *, h3 *, h4 *, h5 *, h6 *, 
+.navbar-brand * {
+  font-family: var(--font-heading) !important;
+}
 
 /* ==========================================
    UTILITY & HELPER CLASSES
@@ -91,7 +108,7 @@ body.page-schedule,
 body.page-task {
   background-color: var(--bg-dark);
   color: var(--text-white);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
   display: flex;
@@ -340,7 +357,7 @@ body::-webkit-scrollbar-thumb:hover {
     }
     
     .glass-label {
-      font-family: 'Outfit', sans-serif;
+      font-family: var(--font-heading), sans-serif;
       font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -527,7 +544,7 @@ body::-webkit-scrollbar-thumb:hover {
 body.page-about {
   background-color: var(--bg-dark);
   color: var(--text-white);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body), sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -574,7 +591,7 @@ body.page-about {
 }
 
 .page-about .about-card h2 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: var(--text-white);
@@ -652,7 +669,7 @@ body.page-about {
 body.page-dashboard {
   background-color: var(--bg-dark);
   color: var(--text-white);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
 }
@@ -751,7 +768,7 @@ body.page-schedule,
 body.page-task {
   background-color: var(--bg-dark);
   color: var(--text-white);
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body), sans-serif;
   min-height: 100vh;
   padding: 8rem 20px 4rem;
   position: relative;
@@ -772,7 +789,7 @@ body.page-task {
 .page-reminder h1,
 .page-schedule h1,
 .page-task h1 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
   color: var(--text-white);
   font-size: 2.2rem;
   font-weight: 800;
@@ -903,12 +920,12 @@ body.page-task {
   font-weight: 800;
   margin-top: 12px;
   color: var(--primary);
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
   letter-spacing: -0.02em;
 }
 
 .page-progress .progress-container h2 {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--text-white);
@@ -983,7 +1000,7 @@ body.page-task {
   color: var(--text-white);
   font-size: 1.1rem;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
 }
 
 .page-reminder .message p {
@@ -1002,7 +1019,7 @@ body.page-task {
    PAGE: Schedule (schedule.html)
    ========================================== */
 .page-schedule label {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
   text-transform: uppercase;
@@ -1075,7 +1092,7 @@ body.page-task {
   color: var(--text-white);
   font-size: 1.15rem;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
 }
 
 .page-schedule .details p {
@@ -1137,7 +1154,7 @@ body.page-task {
   color: var(--text-white);
   font-size: 1.15rem;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
 }
 
 .page-task .details {
@@ -1261,7 +1278,7 @@ body.page-task {
 }
 
 .page-about .team-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-size: 1.05rem;
   font-weight: 700;
   color: var(--text-white);
